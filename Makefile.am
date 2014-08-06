@@ -11,5 +11,5 @@ degreaser_SOURCES = src/degreaser.cpp				\
 					src/output/output_console.cpp	
 degreaser_CXXFLAGS = ${CRAFTER_CXXFLAGS}
 degreaser_LDADD = ${CRAFTER_LIBS} ${CAPNG_LDADD} ${CURSES_LIB}
-man_MANS = degreaser.1
+#man_MANS = degreaser.1
 
