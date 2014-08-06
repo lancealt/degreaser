@@ -65,7 +65,7 @@ void usage(char* prog) {
 	                "  -d, --dev=<dev>            Network device to capture from.\n"
 	                "  -t, --max-threads=<num>    Maximum number of threads to use (default: 10).\n"
 	                "  -h, --help                 Show this message.\n"
-	                "  -q, --quiet                Don't print out so much information.\n"
+	                "  -q, --quiet                Don't print to the console.\n"
 	                "Scan Options:\n"
 	                "  -p, --port=<num>           TCP port to scan (default: 80).\n"
 	                "  -w, --win-threshold=<num>  Window size threshold (default: 20).\n"
@@ -77,10 +77,10 @@ void usage(char* prog) {
 	                "  -o, --output-file=<file>   Write output to this file.\n"
 					"  -x, --exclude=<file>       List of subnets to exclude from the scan.\n"
 					"      --exclude-rfc6890=<yes/no> Exclude RFC 6890 special-purpose addresses <default: yes>.\n"
-#ifdef HAVE_LIBPERM
+#ifdef HAVE_LIBCPERM
 	                "  -s, --sequential           Perform a sequential scan.\n"
 	                "  -r, --random               Perform a ransom scan (default).\n"
-#endif /* HAVE_LIBPERM */
+#endif /* HAVE_LIBCPERM */
 	                "  -P, --pcap=<file>          Save all packets sent and received to a PCAP file.\n"
 	                "\n"
 	                "Subnets to scan can be specified on the command line or read from a file\n"
@@ -92,7 +92,7 @@ void usage(char* prog) {
 #else
 					"LIBCAP_NG=0 "
 #endif
-#ifndef HAVE_LIBCPERM
+#ifdef HAVE_LIBCPERM
 					"LIBCPERM=1 "
 #else
 					"LIBCPERM=0 "
@@ -290,11 +290,13 @@ int main(int argc, char** argv) {
 
 	//subnet_list.normalize();
 
+	if(config.verbose) {
 #ifdef HAVE_CURSES
-	config.outputs.push_back(new OutputCurses(&config));
+		config.outputs.push_back(new OutputCurses(&config));
 #else
-	config.outputs.push_back(new OutputConsole(&config));
+		config.outputs.push_back(new OutputConsole(&config));
 #endif
+	}
 
 	/* Spawn worker threads (if needed) and start scanning */
 	int spawn_delay = config.timeout * 1000000 / config.max_threads;
