@@ -86,6 +86,23 @@ void usage(char* prog) {
 	                "Subnets to scan can be specified on the command line or read from a file\n"
 	                "specified using the -i switch. If no subnets are given and no input file\n"
 	                "is given, subnets are read from standard input.\n");
+	fprintf(stderr, "Compile Configuration:\n  "
+#ifdef HAVE_LIBCAP_NG
+					"LIBCAP_NG=1 "
+#else
+					"LIBCAP_NG=0 "
+#endif
+#ifndef HAVE_LIBCPERM
+					"LIBCPERM=1 "
+#else
+					"LIBCPERM=0 "
+#endif
+#ifdef HAVE_CURSES
+					"LIBCURSES=1 "
+#else
+					"LIBCURSES=0 "
+#endif
+					"\n\n");
 }
 
 void capability_check() {
@@ -239,7 +256,7 @@ int main(int argc, char** argv) {
 
 	linux_firewall_init(config);
 
-#ifdef HAVE_LIBPERM
+#ifdef HAVE_LIBCPERM
 	if(config.random) {
 		config.subnets = new RandomSubnetList();
 	} else {
@@ -247,7 +264,7 @@ int main(int argc, char** argv) {
 	}
 #else
 	config.subnets = new SubnetList();
-#endif /* HAVE_LIBPERM */
+#endif /* HAVE_LIBCPERM */
 
 	config.exclude_list = new SubnetList();
 
