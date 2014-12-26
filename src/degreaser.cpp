@@ -79,7 +79,7 @@ void usage(char* prog) {
 					"      --exclude-rfc6890=<yes/no> Exclude RFC 6890 special-purpose addresses <default: yes>.\n"
 #ifdef HAVE_LIBCPERM
 	                "  -s, --sequential           Perform a sequential scan.\n"
-	                "  -r, --random               Perform a ransom scan (default).\n"
+	                "  -r, --random               Perform a random scan (default).\n"
 #endif /* HAVE_LIBCPERM */
 	                "  -P, --pcap=<file>          Save all packets sent and received to a PCAP file.\n"
 	                "\n"
