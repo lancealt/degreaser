@@ -12,8 +12,8 @@ Notes on install from a blank system (CentOS 7 used).
     libtool,
     libpcap,
     libpcap-dev,
-    libcrafter\*,
-    libcperm\* (optional, needed if you want to scan randomly),
+    libcrafter*,
+    libcperm* (optional, needed if you want to scan randomly),
     libncurses-dev (optional, but needed for progress output),
     libcap-ng (not needed, currently)
 
