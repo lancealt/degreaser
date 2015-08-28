@@ -7,13 +7,15 @@ A tool for detecting network tarpits.
 Notes on install from a blank system (CentOS 7 used).
 
 ### Dependencies:
-   c++  (CentOS used gcc-c++),
-   autoconf, 
-   libtool,
-   libcrafter*,
-   libcperm* (optional, needed if you want to scan randomly),
-   libncurses-dev (optional, but needed for progress output),
-   libcap-ng (not needed, currently)
+   -c++ (CentOS used gcc-c++),
+   -autoconf, 
+   -libtool,
+   -libpcap,
+   -libpcap-dev,
+   -libcrafter\*,
+   -libcperm\* (optional, needed if you want to scan randomly),
+   -libncurses-dev (optional, but needed for progress output),
+   -libcap-ng (not needed, currently)
 
 *Note: install via git
 
