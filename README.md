@@ -27,13 +27,13 @@ Notes on install from a blank system (CentOS 7 used).
     git clone https://github.com/pellegre/libcrafter.git
     (cd libcrafter; ./autogen.sh; ./configure; make; make install)
 ### 3. Install degreaser (via git):
-    git clone https://github.com/lancealt/degreaser.git
+    git clone https://github.com/cmand/degreaser.git
     (cd degreaser; ./autogen.sh; ./configure; make; make install)
 ### 4. Create the necessary links and cache to the most recent shared libraries
     sudo ldconfig
     (for CentOS7: add line '/usr/local/lib' to file /etc/ld.so.conf; then command: 'ldconfig -v')
 ### 5. to run, example useage: 
-    sudo ./degreaser -d eth0 205.155.65.20/29 70.90.166.0/24 74.84.25.0/24 199.212.224.0/21
+    sudo ./degreaser -d eth0 X.X.X.X/Y X.X.X.X/Y X.X.X.X/Y X.X.X.X/Y
 
 ### 6. trouble shooting try:
     ldd -d degreaser
