@@ -241,6 +241,7 @@ int main(int argc, char** argv) {
 				 break;
 			case 'X':
 				 config.exclude_rfc6890 = false;
+				 break;
 			case 'h':
 				usage(argv[0]);
 				exit(EXIT_SUCCESS);
